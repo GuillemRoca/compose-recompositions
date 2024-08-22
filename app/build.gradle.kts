@@ -45,6 +45,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    composeCompiler {
+        reportsDestination = file("build/outputs/compose-reports")
+        metricsDestination = file("build/outputs/compose-metrics")
+    }
 }
 
 dependencies {
