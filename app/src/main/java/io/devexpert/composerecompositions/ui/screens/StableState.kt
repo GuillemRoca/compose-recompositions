@@ -23,7 +23,12 @@ import androidx.compose.ui.Modifier
 import io.devexpert.composerecompositions.ui.screens.shared.Screen
 import io.devexpert.composerecompositions.ui.screens.shared.TopBar
 
-data class Contact(val name: String)
+//data class Contact(val name: String)
+
+@Stable
+class Contact(name: String) {
+    var name by mutableStateOf(name)
+}
 
 @Composable
 fun StableState() {
