@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import io.devexpert.composerecompositions.ui.screens.LazyListKeys
 import io.devexpert.composerecompositions.ui.screens.StableState
 import io.devexpert.composerecompositions.ui.theme.ComposeRecompositionsTheme
 
@@ -14,8 +15,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            StableState()
-            //LazyListKeys()
+            //StableState()
+            LazyListKeys()
             //ColumnKeys()
             //DerivedState()
             //DeferRead()

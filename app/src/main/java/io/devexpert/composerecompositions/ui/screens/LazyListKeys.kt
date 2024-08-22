@@ -1,5 +1,6 @@
 package io.devexpert.composerecompositions.ui.screens
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -8,6 +9,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,24 +24,35 @@ import io.devexpert.composerecompositions.ui.screens.shared.RefreshAction
 import io.devexpert.composerecompositions.ui.screens.shared.Screen
 import io.devexpert.composerecompositions.ui.screens.shared.TopBar
 
+@Immutable
+class MovieListWrapper(val list: List<Movie>)
+
 @Composable
 fun LazyListKeys() {
     Screen {
-        var movies by remember { mutableStateOf(buildMovies(4)) }
+        var movies by remember { mutableStateOf(MovieListWrapper(buildMovies(4))) }
         Scaffold(
             topBar = {
                 TopBar("LazyList Keys") {
-                    RefreshAction { movies = movies.shuffled() }
+                    RefreshAction { movies = MovieListWrapper(movies.list.shuffled()) }
                 }
             },
         ) { padding ->
-            LazyColumn(
-                contentPadding = padding
-            ) {
-                items(movies) {
-                    MovieItem(movie = it)
-                }
-            }
+            MoviesList(padding, movies)
+        }
+    }
+}
+
+@Composable
+private fun MoviesList(
+    padding: PaddingValues,
+    movies: MovieListWrapper
+) {
+    LazyColumn(
+        contentPadding = padding
+    ) {
+        items(movies.list) {
+            MovieItem(movie = it)
         }
     }
 }
