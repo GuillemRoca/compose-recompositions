@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import io.devexpert.composerecompositions.ui.screens.ColumnKeys
+import io.devexpert.composerecompositions.ui.screens.DeferRead
 import io.devexpert.composerecompositions.ui.screens.DerivedState
 import io.devexpert.composerecompositions.ui.screens.LazyListKeys
 import io.devexpert.composerecompositions.ui.screens.StableState
@@ -20,8 +21,8 @@ class MainActivity : ComponentActivity() {
             //StableState()
             //LazyListKeys()
             //ColumnKeys()
-            DerivedState()
-            //DeferRead()
+            //DerivedState()
+            DeferRead()
         }
     }
 }
