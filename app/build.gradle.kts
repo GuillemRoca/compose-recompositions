@@ -49,6 +49,7 @@ android {
     composeCompiler {
         reportsDestination = file("build/outputs/compose-reports")
         metricsDestination = file("build/outputs/compose-metrics")
+        stabilityConfigurationFile = file("${rootDir}/stability-config.txt")
     }
 }
 

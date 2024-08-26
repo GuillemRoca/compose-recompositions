@@ -24,17 +24,15 @@ import io.devexpert.composerecompositions.ui.screens.shared.RefreshAction
 import io.devexpert.composerecompositions.ui.screens.shared.Screen
 import io.devexpert.composerecompositions.ui.screens.shared.TopBar
 
-@Immutable
-class MovieListWrapper(val list: List<Movie>)
 
 @Composable
 fun LazyListKeys() {
     Screen {
-        var movies by remember { mutableStateOf(MovieListWrapper(buildMovies(4))) }
+        var movies by remember { mutableStateOf(buildMovies(4)) }
         Scaffold(
             topBar = {
                 TopBar("LazyList Keys") {
-                    RefreshAction { movies = MovieListWrapper(movies.list.shuffled()) }
+                    RefreshAction { movies = movies.shuffled() }
                 }
             },
         ) { padding ->
@@ -46,12 +44,12 @@ fun LazyListKeys() {
 @Composable
 private fun MoviesList(
     padding: PaddingValues,
-    movies: MovieListWrapper
+    movies: List<Movie>
 ) {
     LazyColumn(
         contentPadding = padding
     ) {
-        items(movies.list) {
+        items(movies) {
             MovieItem(movie = it)
         }
     }
