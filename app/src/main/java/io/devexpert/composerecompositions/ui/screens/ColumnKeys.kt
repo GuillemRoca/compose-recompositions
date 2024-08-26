@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key
 import io.devexpert.composerecompositions.data.buildMovies
 import io.devexpert.composerecompositions.ui.screens.shared.RefreshAction
 import io.devexpert.composerecompositions.ui.screens.shared.Screen
@@ -29,7 +31,9 @@ fun ColumnKeys() {
                 modifier = Modifier.padding(padding)
             ) {
                 for (movie in movies) {
-                    MovieItem(movie = movie)
+                    key(movie.id) {
+                        MovieItem(movie = movie)
+                    }
                 }
             }
         }
